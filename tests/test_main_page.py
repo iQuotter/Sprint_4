@@ -9,7 +9,7 @@ class TestQaScooterPraktikumServices:
 
     @pytest.mark.menu_accordion
     @pytest.mark.parametrize('question_index', [0, 1, 2, 3, 4, 5, 6, 7])
-    @allure.title("Проверяем данные меню 'Вопросы о важно'")
+    @allure.title("Проверяем данные меню 'Вопросы о важном'")
     def test_click_on_question_and_check_answer(selfs, driver, question_index):
         ActionOnPage().accept_cookie(driver)
         MainPage().click_on_question_and_check_answer(driver, question_index)
