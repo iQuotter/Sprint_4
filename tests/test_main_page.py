@@ -63,8 +63,7 @@ class TestQaScooterPraktikumServices:
                                               date=date,
                                               index=index,
                                               color=color_index,
-                                              message=message
-                                              )
+                                              message=message)
 
         AboutRentPage().click_on_button_to_order(driver)
         AboutRentPage().click_yes_on_modal_menu(driver)
