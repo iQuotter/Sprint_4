@@ -3,12 +3,13 @@ import pytest
 
 from PageObject.Pages import *
 from PageObject.Informations import *
+from selenium import webdriver
 
-
+driver = webdriver.Chrome()
 class TestQaScooterPraktikumServices:
 
     @pytest.mark.menu_accordion
-    @pytest.mark.parametrize('question_index', [0, 1, 2, 3, 4, 5, 6, 7])
+    @pytest.mark.parametrize('question_index', [i for i in range(8)])
     @allure.title("Проверяем данные меню 'Вопросы о важном'")
     def test_click_on_question_and_check_answer(selfs, driver, question_index):
         ActionOnPage().accept_cookie(driver)
