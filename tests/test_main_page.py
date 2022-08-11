@@ -3,9 +3,8 @@ import pytest
 
 from PageObject.Pages import *
 from PageObject.Informations import *
-from selenium import webdriver
 
-driver = webdriver.Chrome()
+
 class TestQaScooterPraktikumServices:
 
     @pytest.mark.menu_accordion
