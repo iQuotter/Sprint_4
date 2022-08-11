@@ -24,7 +24,7 @@ class TestQaScooterPraktikumServices:
                                                   pytest.param(MainPageLocators.LOGO_BUTTON_YANDEX[1],
                                                                "https://yandex.ru/",
                                                                marks=pytest.mark.logo_yandex)])
-    @allure.title("Проверяем работу кнопки 'Логитип'")
+    @allure.title("Проверяем работу кнопки 'Логотип'")
     def test_click_on_logo(self, driver, button_logo, url):
         MainPage().click_on_logo(driver, button_logo)
         ActionOnPage().checking_the_current_tab(driver)
