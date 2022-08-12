@@ -159,7 +159,7 @@ class AboutRentPage:
 
     @allure.step("Заполняем форму 'Про аренду'")
     def enter_about_rent_date(self, driver, date, index, color, message):
-        ActionOnPage.wait_element(driver, AboutRentLocators.COMMENT_FOR_THE_COURIER[1])
+        ActionOnPage().wait_element(driver, AboutRentLocators.COMMENT_FOR_THE_COURIER[1])
 
         self.set_when_to_bring(driver, date)
         self.set_rental_period(driver, index)
