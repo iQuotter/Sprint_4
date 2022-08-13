@@ -1,4 +1,8 @@
+import time
 import pytest
+
+
+from allure_commons.types import AttachmentType
 
 
 from PageObject.Pages import *
@@ -15,7 +19,10 @@ class TestQaScooterPraktikumServices:
         MainPage().click_on_question_and_check_answer(driver, question_index)
 
         assert driver.find_elements(*MainPageLocators.ANSWER_ACCORDION)[question_index].text \
-               == TextInfo.DICT_ACCORDION_BUTTONS[driver.find_elements(*MainPageLocators.QUESTIONS_ACCORDION)[question_index].text]
+               == TextInfo.DICT_ACCORDION_BUTTONS[driver.find_elements(*MainPageLocators.QUESTIONS_ACCORDION)[question_index].text], \
+            allure.attach(driver.get_screenshot_as_png(),
+                          name="screenshot"+str(time.process_time()),
+                          attachment_type=AttachmentType.PNG)
 
     @pytest.mark.click
     @pytest.mark.parametrize('button_logo, url', [pytest.param(MainPageLocators.LOGO_BUTTON_SCOOTER[1],
@@ -29,7 +36,10 @@ class TestQaScooterPraktikumServices:
         MainPage().click_on_logo(driver, button_logo)
         ActionOnPage().checking_the_current_tab(driver)
 
-        assert driver.current_url == url
+        assert driver.current_url == url, \
+            allure.attach(driver.get_screenshot_as_png(),
+                          name="screenshot"+str(time.process_time()),
+                          attachment_type=AttachmentType.PNG)
 
     @pytest.mark.order
     @pytest.mark.xfail  # in browser Chrome fail
@@ -68,4 +78,7 @@ class TestQaScooterPraktikumServices:
         AboutRentPage().click_on_button_to_order(driver)
         AboutRentPage().click_yes_on_modal_menu(driver)
 
-        assert "Заказ оформлен" in AboutRentPage().completed_order(driver)
+        assert "Заказ оформлен" in AboutRentPage().completed_order(driver), \
+            allure.attach(driver.get_screenshot_as_png(),
+                          name="screenshot"+str(time.process_time()),
+                          attachment_type=AttachmentType.PNG)
